@@ -5,51 +5,51 @@
   <div class="header">
     <div class="header-divider"><div class="divider-left"></div></div>
     <div class="header-content">
-        <div class="header-left">
-            <img src="../assets/header/Bank_of_China_Logo.png" alt="">
-            <div class="img-divider"></div>
-            <img src="../assets/header/icn_footer_logo.png" alt="">
-        </div>
-        <div class="header-right"></div>
+      <div class="header-left">
+        <img src="../assets/header/Bank_of_China_Logo.png" alt="" />
+        <div class="img-divider"></div>
+        <img src="../assets/header/icn_footer_logo.png" alt="" />
+      </div>
+      <div class="header-right"></div>
     </div>
   </div>
 </template>
 
 <style lang="less" scoped>
-.header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 99;
+  background-color: white;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.05);
+  .header-divider {
     width: 100%;
-    height: 60px;
-    z-index: 99;
-    background-color: white;
-    .header-divider{
-        width: 100%;
-        height: 4px;
-        background-color: #9d2235;
-        .divider-left{
-            background-color: #7c878e;
-            width: 211px;
-            height: 4px;
-        }
+    height: 4px;
+    background-color: #9d2235;
+    .divider-left {
+      background-color: #7c878e;
+      width: 211px;
+      height: 4px;
     }
-    .header-content{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 56px;
-        // background-color: skyblue;
-        width: 1568px;
-        margin: auto;
-        .img-divider {
-            display: inline-block;
-            width: 1px;
-            height: 32px;
-            background-color: #d8d8d8;
-            margin: 0 20px;
-        }
-}
+  }
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    width: 1568px;
+    margin: auto;
+    .img-divider {
+      display: inline-block;
+      width: 1px;
+      height: 32px;
+      background-color: #d8d8d8;
+      margin: 0 20px;
+    }
+  }
 }
 </style>

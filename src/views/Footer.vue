@@ -48,6 +48,7 @@ const data = [
 <style lang="less" scoped>
 .footer {
   position: relative;
+  top: 100px;
   left: 0;
   width: 100vw;
   background-color: #f2f2f2;

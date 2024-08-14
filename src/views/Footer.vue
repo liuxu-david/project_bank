@@ -47,6 +47,8 @@ const data = [
 
 <style lang="less" scoped>
 .footer {
+  position: relative;
+  left: 0;
   width: 100vw;
   background-color: #f2f2f2;
   padding: 16px 0;
@@ -70,7 +72,7 @@ const data = [
         color: #666666;
       }
     }
-    .copyright{
+    .copyright {
       width: 100%;
       font-size: 10px;
       color: #999999;

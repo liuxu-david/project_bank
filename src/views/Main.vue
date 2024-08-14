@@ -68,17 +68,30 @@ const slides = [
 
 <style lang="less" scoped>
 .main {
+  position: relative;
+  top: 60px;
+  left: 0;
+  right: 0;
   width: 100%;
-  height: 900px;
-  margin-top: 60px;
+  // margin-top: 60px;
   .swiper-wrapper {
     width: 100vw;
     height: 500px;
     .swiper-slide {
+      // position: relative;
       width: 100vw;
       height: 100%;
       background-repeat: no-repeat;
       background-size: 100% 100%;
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   background: linear-gradient(transparent, transparent, black);
+      //   opacity: 0.6;
+      //   width: 100%;
+      //   height: 100%;
+      // }
+
       .float-info {
         position: absolute;
         left: 0;
@@ -108,6 +121,14 @@ const slides = [
         }
       }
     }
+  }
+  .menu {
+    width: 1568px;
+    height: 1000px;
+    margin: auto;
+    background-color: aqua;
+    padding: 32px 0;
+    z-index: 1000;
   }
 }
 </style>

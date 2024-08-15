@@ -221,6 +221,25 @@ const loginData = reactive([
     value: "",
   },
 ]);
+const modalData = reactive([
+  {
+    title: "iGTB平台编号/登录名称",
+    value: "",
+  },
+  {
+    title: "使用者代号",
+    value: "",
+  },
+  {
+    title: "密码",
+    value: "",
+    operate: "忘记密码",
+  },
+  {
+    title: "验证码",
+    value: "",
+  },
+]);
 const modelFlag = ref(false);
 
 const handleMenuItemClick = (flag, address) => {
@@ -259,15 +278,14 @@ const handleModel = () => {
       <div class="form">
         <div class="login-title">登录</div>
         <div class="login-desc">首次使用者?<span>按此开始使用</span></div>
-        <div class="login-input">
-          <InputItem
-            v-for="item in loginData"
-            :key="item.title"
-            v-model:inputValue="item.value"
-            :title="item.title"
-            :operate="item.operate"
-          />
-        </div>
+        <InputItem
+          v-for="item in loginData"
+          :key="item.title"
+          v-model:inputValue="item.value"
+          :title="item.title"
+          :operate="item.operate"
+        />
+
         <div class="login_button">
           <div class="btn" @click="handleLogin">基本登录</div>
           <div class="btn">双重认证登录</div>
@@ -289,6 +307,23 @@ const handleModel = () => {
       <div class="login-modal">
         <div class="border">
           <div class="border_right"></div>
+        </div>
+        <div class="form">
+          <div class="title">
+            <h2>登录</h2>
+            首次使用者? <span>点此开始使用</span>
+          </div>
+          <InputItem
+            v-for="item in modalData"
+            :key="item.title"
+            v-model:inputValue="item.value"
+            :title="item.title"
+            :operate="item.operate"
+          />
+          <div class="login_button">
+            <span class="btn" @click="handleLogin">基本登录</span>
+            <span class="btn">双重认证登录</span>
+          </div>
         </div>
       </div>
     </div>
@@ -355,7 +390,7 @@ const handleModel = () => {
   }
   .login-section {
     position: absolute;
-    right: 16px;
+    right: 156px;
     top: 24px;
     z-index: 9;
     background: rgba(34, 34, 34, 0.6);
@@ -440,6 +475,39 @@ const handleModel = () => {
           width: 100px;
           height: 4px;
           background-color: rgb(124, 135, 142);
+        }
+      }
+      .form {
+        color: white;
+        padding: 0 20px;
+        .title {
+          text-align: left;
+          margin: 50px 10px 20px 0px;
+          h2 {
+            margin-bottom: 5px;
+          }
+          span {
+            font-weight: 700;
+          }
+        }
+        .login_button {
+          text-align: right;
+          margin-top: 30px;
+          :first-child {
+            margin-right: 20px;
+          }
+
+          .btn {
+            height: 40px;
+            border: 1px solid white;
+            padding: 12px 40px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          .btn:hover {
+            background-color: white;
+            color: black;
+          }
         }
       }
     }

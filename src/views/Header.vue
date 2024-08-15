@@ -1,4 +1,56 @@
 <script setup>
+import IconItem from "@/components/IconItem.vue";
+
+const iconInfo = [
+  {
+    x: -180,
+    y: -30,
+    acitveX: -180,
+    activeY: -52,
+    img: new URL("@/assets/header/header.png", import.meta.url),
+    title: "首页",
+  },
+  {
+    x: -60,
+    y: -30,
+    acitveX: -60,
+    activeY: -52,
+    img: new URL("@/assets/header/header.png", import.meta.url),
+    title: "我的仪表板",
+  },
+  {
+    x: -120,
+    y: -30,
+    acitveX: -120,
+    activeY: -52,
+    img: new URL("@/assets/header/header.png", import.meta.url),
+    title: "收件箱",
+  },
+  {
+    x: -300,
+    y: -30,
+    acitveX: -300,
+    activeY: -52,
+    img: new URL("@/assets/header/header.png", import.meta.url),
+    title: "打印",
+  },
+  {
+    x: -240,
+    y: -30,
+    acitveX: -240,
+    activeY: -52,
+    img: new URL("@/assets/header/header.png", import.meta.url),
+    title: "练习我们",
+  },
+  {
+    x: -420,
+    y: -30,
+    acitveX: -420,
+    activeY: -52,
+    img: new URL("@/assets/header/header.png", import.meta.url),
+    title: "我的设定",
+  },
+];
 </script>
 
 <template>
@@ -10,7 +62,10 @@
         <div class="img-divider"></div>
         <img src="../assets/header/icn_footer_logo.png" alt="" />
       </div>
-      <div class="header-right"></div>
+      <div class="header-right">
+        <IconItem v-for="item in iconInfo" :key="item.title" :info="item" />
+        <div class="login-btn">登录</div>
+      </div>
     </div>
   </div>
 </template>
@@ -49,6 +104,21 @@
       height: 32px;
       background-color: #d8d8d8;
       margin: 0 20px;
+    }
+    .header-right {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .login-btn {
+        padding: 5px 26px;
+        font-size: 16px;
+        background-color: #b51a25;
+        color: #ffffff;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 700;
+      }
     }
   }
 }

@@ -37,7 +37,7 @@ const handleBlur = () => {
 .input-item {
   position: relative;
   height: 58px;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
   input {
     position: absolute;
     bottom: 0;
@@ -46,7 +46,7 @@ const handleBlur = () => {
     width: 100%;
     background-color: transparent;
     outline: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     color: white;
     box-sizing: border-box;
   }

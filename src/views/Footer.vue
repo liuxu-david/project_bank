@@ -34,11 +34,9 @@ const data = [
 <template>
   <div class="footer">
     <div class="footer-content">
-      <div class="header">
-        <div class="item-link" v-for="(item, index) in data" :key="item.lable">
-          <a :href="item.href">{{ item.lable }}</a>
-          <span v-if="data.length - 1 !== index">|</span>
-        </div>
+      <div class="item-link" v-for="(item, index) in data" :key="item.lable">
+        <a :href="item.href">{{ item.lable }}</a>
+        <span v-if="data.length - 1 !== index">|</span>
       </div>
       <div class="copyright">©　中国银行（香港）有限公司。版权所有。</div>
     </div>

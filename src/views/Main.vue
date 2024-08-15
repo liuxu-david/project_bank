@@ -1,7 +1,9 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import MenuItemVue from "../components/MenuItem.vue";
+import { reactive, ref } from "vue";
+import MenuItem from "../components/MenuItem.vue";
+import InputItem from "../components/InputItem.vue";
 
 const slides = [
   {
@@ -43,130 +45,190 @@ const menuInfo = [
     y: -30,
     acitveX: -300,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "仪表板",
     desc: "根据您的需要选择仪表板展示内容，快速进入交易",
+    needLogin: true,
   },
   {
     x: -900,
     y: -30,
     acitveX: -900,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "自贸区业务图书馆",
     desc: "提供最新自贸区、大湾区及人民币国际化政策动态",
+    address: "https://igtb.bochk.com/",
   },
   {
     x: 0,
     y: -30,
     acitveX: 0,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "网上申请商业理财账户",
     desc: "只需三个简单步骤即可申请开立商业理财账户",
+    address:
+      "https://transaction.bochk.com/igtb/html/aop/gib_aopMainPage.html?lang=zh_CN",
   },
   {
     x: -750,
     y: -30,
     acitveX: -750,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "查询",
     desc: "以视图形式为您展示全球账户，余额及交易资讯，一目了然",
+    needLogin: true,
   },
   {
     x: -1500,
     y: -30,
     acitveX: -1500,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "知识中心",
     desc: "提供丰富业务资讯、产品介绍、服务条款及功能说明书等",
+    address: "https://igtb.bochk.com/",
   },
   {
     x: -1200,
     y: -30,
     acitveX: -1200,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "工具",
     desc: "提供更多管理工具，使您的交易更加便利",
+    needLogin: true,
   },
   {
     x: -150,
     y: -30,
     acitveX: -150,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "交易银行",
     desc: "了解我们多元化的交易银行业务。",
+    address: "https://igtb.bochk.com/",
   },
   {
     x: -1050,
     y: -30,
     acitveX: -1050,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "培训中心",
     desc: " 提供常用业务指引及功能亮点说明，增进您对iGTB平台的认识",
+    address: "https://igtb.bochk.com/",
   },
   {
     x: -600,
     y: -30,
     acitveX: -600,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "中银全球智汇",
     desc: "智能汇款服务方便您随时追踪汇款，提高汇款效率",
+    needLogin: true,
   },
   {
     x: -1350,
     y: -30,
     acitveX: -1350,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "下载中心",
     desc: "提供不同国家/提供交易模板，供您下载使用",
+    needLogin: true,
   },
   {
     x: -1650,
     y: -30,
     acitveX: -1650,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "本地特色服务",
     desc: "为您提供不同国家/地区的当地特色服务，满足不同业务需要",
+    needLogin: true,
   },
   {
     x: -150,
     y: -180,
     acitveX: -150,
     activeY: -252,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "iGTB API资讯网",
     desc: "了解中银香港iGTB API服务详情，您亦可下载不同API材料",
+    address: "https://igtb.bochk.com/",
   },
   {
     x: 0,
     y: -180,
     acitveX: 0,
     activeY: -252,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "绿色存款",
     desc: "参与绿色存款，启航实践可持续发展理念",
+    needLogin: true,
   },
   {
     x: 0,
     y: -30,
     acitveX: 0,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "在线贷款申请",
     desc: "三个步骤完成您的线上货款申请，轻松解决公司资金周转需要",
+    address: "https://igtb.bochk.com/loanapplication_sc.html",
   },
   {
     x: -300,
     y: -30,
     acitveX: -300,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "申请询证函",
     desc: "",
+    needLogin: true,
   },
   {
     x: -1350,
     y: -30,
     acitveX: -1350,
     activeY: -102,
+    img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "上载银行服务指示文件",
     desc: "您可透过此功能上载并递交银行服务指示文件",
+    needLogin: true,
   },
 ];
+const loginData = reactive([
+  {
+    title: "iGTB平台编号/登录名称",
+    value: "",
+  },
+  {
+    title: "使用者代号",
+    value: "",
+  },
+  {
+    title: "密码",
+    value: "",
+    operate: "忘记密码",
+  },
+  {
+    title: "验证码",
+    value: "",
+  },
+]);
+const modelFlag = ref(false);
+
+const handleMenuItemClick = (flag, address) => {
+  flag ? (modelFlag.value = true) : open(address, "_blank");
+};
+const handleModel = () => {
+  modelFlag.value = !modelFlag.value;
+};
 </script>
 
 <template>
@@ -179,7 +241,7 @@ const menuInfo = [
         :autoplay="{ delay: 3000 }"
         :slides-per-view="1"
       >
-        <Swiper-slide
+        <SwiperSlide
           class="swiper-slide"
           v-for="item in slides"
           :key="item.img"
@@ -190,15 +252,45 @@ const menuInfo = [
             <p v-if="item.detailContent">{{ item.detailContent }}</p>
             <div class="btn">了解更多</div>
           </div>
-        </Swiper-slide>
+        </SwiperSlide>
       </Swiper>
     </div>
+    <div class="login-section">
+      <div class="form">
+        <div class="login-title">登录</div>
+        <div class="login-desc">首次使用者?<span>按此开始使用</span></div>
+        <div class="login-input">
+          <InputItem
+            v-for="item in loginData"
+            :key="item.title"
+            v-model:inputValue="item.value"
+            :title="item.title"
+            :operate="item.operate"
+          />
+        </div>
+        <div class="login_button">
+          <div class="btn" @click="handleLogin">基本登录</div>
+          <div class="btn">双重认证登录</div>
+        </div>
+      </div>
+    </div>
     <div class="menu">
-      <MenuItemVue
+      <MenuItem
         :menuInfo="item"
         v-for="item in menuInfo"
         :key="item.title"
+        @click="handleMenuItemClick(item.needLogin, item.address)"
       />
+    </div>
+  </div>
+  <div class="model" v-if="modelFlag">
+    <div class="shadow" @click="handleModel"></div>
+    <div class="loginData">
+      <div class="login-modal">
+        <div class="border">
+          <div class="border_right"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -261,6 +353,54 @@ const menuInfo = [
     --swiper-pagination-bullet-inactive-color: #ffffff;
     --swiper-pagination-bullet-inactive-opacity: 1;
   }
+  .login-section {
+    position: absolute;
+    right: 16px;
+    top: 24px;
+    z-index: 9;
+    background: rgba(34, 34, 34, 0.6);
+    width: 320px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #ffffff !important;
+    .form {
+      .login-title {
+        font-weight: 700;
+        font-size: 24px;
+      }
+      .login-desc {
+        margin-top: 8px;
+        span {
+          font-weight: 600;
+          cursor: pointer;
+          padding-left: 6px;
+        }
+      }
+      .login_button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .btn {
+          display: inline-block;
+          min-width: 132px;
+          height: 40px;
+          text-align: center;
+          line-height: 40px;
+          border: 1px solid white;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          margin-top: 16px;
+        }
+        .btn:hover {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+  }
   .menu {
     display: flex;
     flex-wrap: wrap;
@@ -268,6 +408,41 @@ const menuInfo = [
     width: 1568px;
     margin: auto;
     padding: 32px 0;
+  }
+}
+.model {
+  .shadow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: yellow;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .loginData {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    .login-modal {
+      width: 500px;
+      height: 480px;
+      background-color: black;
+
+      .border {
+        height: 4px;
+        background-color: rgb(181, 26, 37);
+        .border_right {
+          width: 100px;
+          height: 4px;
+          background-color: rgb(124, 135, 142);
+        }
+      }
+    }
   }
 }
 </style>

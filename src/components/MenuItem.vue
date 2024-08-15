@@ -17,7 +17,6 @@ const handleMouseLeave = () => {
   info.y = props.menuInfo.y;
   menuItemActive.value = false;
 };
-const handleMenuClick = () => {};
 </script>
 
 <template>
@@ -26,11 +25,13 @@ const handleMenuClick = () => {};
       class="menu-link"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
-      @click="handleMenuClick"
     >
       <div
         class="menu-img"
-        :style="{ backgroundPosition: `${info.x}px ${info.y}px` }"
+        :style="{
+          backgroundImage: `url(${props.menuInfo.img})`,
+          backgroundPosition: `${info.x}px ${info.y}px`,
+        }"
       ></div>
       <div :class="['menu-title', menuItemActive ? 'menu-title-active' : '']">
         {{ props.menuInfo.title }}
@@ -53,7 +54,7 @@ const handleMenuClick = () => {};
       width: 72px;
       height: 72px;
       margin: 0 auto 10px;
-      background-image: url("../assets/home/homePage.png");
+      //   background-image: url("../assets/home/homePage.png");
       background-repeat: no-repeat;
       background-size: 1800px 330px;
     }

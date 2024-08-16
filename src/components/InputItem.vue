@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { validate } from "vee-validate";
 
 const inputValue = defineModel("inputValue");
 const props = defineProps({

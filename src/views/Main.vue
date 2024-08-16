@@ -1,7 +1,7 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import MenuItem from "../components/MenuItem.vue";
 import InputItem from "../components/InputItem.vue";
 import { useMainStore } from "../store/mainStore";
@@ -9,6 +9,8 @@ import { storeToRefs } from "pinia";
 
 const mainStore = useMainStore();
 const { modelFlag } = storeToRefs(mainStore);
+// const modelFlag = computed(() => mainStore.modelFlag);
+
 const { handleModel } = mainStore;
 
 const slides = [
@@ -64,7 +66,7 @@ const menuInfo = [
     img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "自贸区业务图书馆",
     desc: "提供最新自贸区、大湾区及人民币国际化政策动态",
-    address: "https://igtb.bochk.com/",
+    href: "https://igtb.bochk.com/",
   },
   {
     x: 0,
@@ -74,8 +76,7 @@ const menuInfo = [
     img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "网上申请商业理财账户",
     desc: "只需三个简单步骤即可申请开立商业理财账户",
-    address:
-      "https://transaction.bochk.com/igtb/html/aop/gib_aopMainPage.html?lang=zh_CN",
+    href: "https://transaction.bochk.com/igtb/html/aop/gib_aopMainPage.html?lang=zh_CN",
   },
   {
     x: -750,
@@ -95,7 +96,7 @@ const menuInfo = [
     img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "知识中心",
     desc: "提供丰富业务资讯、产品介绍、服务条款及功能说明书等",
-    address: "https://igtb.bochk.com/",
+    href: "https://igtb.bochk.com/",
   },
   {
     x: -1200,
@@ -115,7 +116,7 @@ const menuInfo = [
     img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "交易银行",
     desc: "了解我们多元化的交易银行业务。",
-    address: "https://igtb.bochk.com/",
+    href: "https://igtb.bochk.com/",
   },
   {
     x: -1050,
@@ -125,7 +126,7 @@ const menuInfo = [
     img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "培训中心",
     desc: " 提供常用业务指引及功能亮点说明，增进您对iGTB平台的认识",
-    address: "https://igtb.bochk.com/",
+    href: "https://igtb.bochk.com/",
   },
   {
     x: -600,
@@ -165,7 +166,7 @@ const menuInfo = [
     img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "iGTB API资讯网",
     desc: "了解中银香港iGTB API服务详情，您亦可下载不同API材料",
-    address: "https://igtb.bochk.com/",
+    href: "https://igtb.bochk.com/",
   },
   {
     x: 0,
@@ -185,7 +186,7 @@ const menuInfo = [
     img: new URL("@/assets/home/homePage.png", import.meta.url),
     title: "在线贷款申请",
     desc: "三个步骤完成您的线上货款申请，轻松解决公司资金周转需要",
-    address: "https://igtb.bochk.com/loanapplication_sc.html",
+    href: "https://igtb.bochk.com/loanapplication_sc.html",
   },
   {
     x: -300,
@@ -247,8 +248,8 @@ const modalData = reactive([
   },
 ]);
 
-const handleMenuItemClick = (flag, address) => {
-  flag ? handleModel() : open(address, "_blank");
+const handleMenuItemClick = (flag, href) => {
+  flag ? handleModel() : open(href, "_blank");
 };
 </script>
 
@@ -299,7 +300,7 @@ const handleMenuItemClick = (flag, address) => {
         :menuInfo="item"
         v-for="item in menuInfo"
         :key="item.title"
-        @click="handleMenuItemClick(item.needLogin, item.address)"
+        @click="handleMenuItemClick(item.needLogin, item.href)"
       />
     </div>
   </div>
@@ -514,5 +515,6 @@ const handleMenuItemClick = (flag, address) => {
       }
     }
   }
+  transition: all 0.3s;
 }
 </style>

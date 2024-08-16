@@ -13,6 +13,7 @@ const iconInfo = [
     activeY: -52,
     img: new URL("@/assets/header/header.png", import.meta.url),
     title: "首页",
+    href: "https://igtb.bochk.com/",
   },
   {
     x: -60,
@@ -21,6 +22,7 @@ const iconInfo = [
     activeY: -52,
     img: new URL("@/assets/header/header.png", import.meta.url),
     title: "我的仪表板",
+    needLogin: true,
   },
   {
     x: -120,
@@ -29,6 +31,7 @@ const iconInfo = [
     activeY: -52,
     img: new URL("@/assets/header/header.png", import.meta.url),
     title: "收件箱",
+    href: "https://igtb.bochk.com/",
   },
   {
     x: -300,
@@ -37,6 +40,7 @@ const iconInfo = [
     activeY: -52,
     img: new URL("@/assets/header/header.png", import.meta.url),
     title: "打印",
+    needLogin: true,
   },
   {
     x: -240,
@@ -45,6 +49,7 @@ const iconInfo = [
     activeY: -52,
     img: new URL("@/assets/header/header.png", import.meta.url),
     title: "练习我们",
+    href: "https://igtb.bochk.com/",
   },
   {
     x: -420,
@@ -53,8 +58,12 @@ const iconInfo = [
     activeY: -52,
     img: new URL("@/assets/header/header.png", import.meta.url),
     title: "我的设定",
+    needLogin: true,
   },
 ];
+const handleIconClick = (flag, href) => {
+  flag ? handleModel() : open(href, "_blank");
+};
 </script>
 
 <template>
@@ -67,7 +76,12 @@ const iconInfo = [
         <img src="../assets/header/icn_footer_logo.png" alt="" />
       </div>
       <div class="header-right">
-        <IconItem v-for="item in iconInfo" :key="item.title" :info="item" />
+        <IconItem
+          v-for="item in iconInfo"
+          :key="item.title"
+          :info="item"
+          @click="handleIconClick(item.needLogin, item.href)"
+        />
         <div class="login-btn" @click="handleModel">登录</div>
       </div>
     </div>

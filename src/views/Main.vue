@@ -4,6 +4,12 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { reactive, ref } from "vue";
 import MenuItem from "../components/MenuItem.vue";
 import InputItem from "../components/InputItem.vue";
+import { useMainStore } from "../store/mainStore";
+import { storeToRefs } from "pinia";
+
+const mainStore = useMainStore();
+const { modelFlag } = storeToRefs(mainStore);
+const { handleModel } = mainStore;
 
 const slides = [
   {
@@ -240,13 +246,9 @@ const modalData = reactive([
     value: "",
   },
 ]);
-const modelFlag = ref(false);
 
 const handleMenuItemClick = (flag, address) => {
-  flag ? (modelFlag.value = true) : open(address, "_blank");
-};
-const handleModel = () => {
-  modelFlag.value = !modelFlag.value;
+  flag ? handleModel() : open(address, "_blank");
 };
 </script>
 

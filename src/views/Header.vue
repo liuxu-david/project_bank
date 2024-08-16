@@ -1,5 +1,9 @@
 <script setup>
 import IconItem from "@/components/IconItem.vue";
+import { useMainStore } from "../store/mainStore";
+
+const mainStore = useMainStore();
+const { handleModel } = mainStore;
 
 const iconInfo = [
   {
@@ -64,7 +68,7 @@ const iconInfo = [
       </div>
       <div class="header-right">
         <IconItem v-for="item in iconInfo" :key="item.title" :info="item" />
-        <div class="login-btn">登录</div>
+        <div class="login-btn" @click="handleModel">登录</div>
       </div>
     </div>
   </div>

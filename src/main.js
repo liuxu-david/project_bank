@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import App from './App.vue'
 import router from './router/index.js'
-import { createPinia } from 'pinia'
+import pinia from './store/index.js'
 
-const pinia = createPinia()
+
 createApp(App).use(router).use(pinia).mount('#app')

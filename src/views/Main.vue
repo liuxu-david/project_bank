@@ -6,12 +6,16 @@ import MenuItem from "../components/MenuItem.vue";
 import InputItem from "../components/InputItem.vue";
 import { useMainStore } from "../store/mainStore";
 import { storeToRefs } from "pinia";
+import Schema from "async-validator";
+import { rules } from "@/utils/inputValidator.js";
 
 const mainStore = useMainStore();
 const { modelFlag } = storeToRefs(mainStore);
+const validator = new Schema(rules);
 // const modelFlag = computed(() => mainStore.modelFlag);
 
 const { handleModel } = mainStore;
+const inputRef = ref(null);
 
 const slides = [
   {
@@ -211,38 +215,47 @@ const menuInfo = [
 ];
 const loginData = reactive([
   {
+    id: "username",
     title: "iGTB平台编号/登录名称",
     value: "",
   },
   {
+    id: "codename",
     title: "使用者代号",
     value: "",
   },
   {
+    id: "password",
     title: "密码",
     value: "",
     operate: "忘记密码",
   },
   {
+    id: "authcode",
     title: "验证码",
     value: "",
   },
 ]);
+
 const modalData = reactive([
   {
+    id: "username",
     title: "iGTB平台编号/登录名称",
     value: "",
   },
   {
+    id: "codename",
     title: "使用者代号",
     value: "",
   },
   {
+    id: "password",
     title: "密码",
     value: "",
     operate: "忘记密码",
   },
   {
+    id: "authcode",
     title: "验证码",
     value: "",
   },
@@ -250,6 +263,13 @@ const modalData = reactive([
 
 const handleMenuItemClick = (flag, href) => {
   flag ? handleModel() : open(href, "_blank");
+};
+const handleLogin = () => {
+  if (inputRef.value.length) {
+    inputRef.value.forEach((refItem) => {
+      refItem.handleValidate();
+    });
+  }
 };
 </script>
 
@@ -287,6 +307,8 @@ const handleMenuItemClick = (flag, href) => {
           v-model:inputValue="item.value"
           :title="item.title"
           :operate="item.operate"
+          :id="item.id"
+          ref="inputRef"
         />
 
         <div class="login_button">
@@ -322,6 +344,7 @@ const handleMenuItemClick = (flag, href) => {
             v-model:inputValue="item.value"
             :title="item.title"
             :operate="item.operate"
+            :id="item.id"
           />
           <div class="login_button">
             <span class="btn" @click="handleLogin">基本登录</span>
@@ -410,6 +433,7 @@ const handleMenuItemClick = (flag, href) => {
       }
       .login-desc {
         margin-top: 8px;
+        font-size: 14px;
         span {
           font-weight: 600;
           cursor: pointer;

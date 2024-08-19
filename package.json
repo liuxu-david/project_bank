@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "async-validator": "^4.2.5",
     "axios": "^1.7.3",
     "pinia": "^2.2.1",
     "swiper": "^11.1.9",

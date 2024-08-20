@@ -116,12 +116,16 @@ const handleIconClick = (flag, href) => {
     height: 56px;
     width: 1568px;
     margin: auto;
+
     .img-divider {
       display: inline-block;
       width: 1px;
       height: 32px;
       background-color: #d8d8d8;
       margin: 0 20px;
+    }
+    .header-left {
+      cursor: pointer;
     }
     .header-right {
       display: flex;

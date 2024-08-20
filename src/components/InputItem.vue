@@ -8,11 +8,13 @@ const props = defineProps({
   id: String,
   title: String,
   operate: String,
+  remind: String,
 });
 // 是否聚焦
 const isForcused = ref(false);
 // 是否校验
 const isValid = ref(false);
+const isShowRemind = ref(false);
 const validator = new Schema(rules);
 const inputError = ref(props.title);
 
@@ -43,6 +45,13 @@ const handleBlur = () => {
   }
 };
 defineExpose({ handleValidate });
+
+const handleMouseEnter = () => {
+  isShowRemind.value = true;
+};
+const handleMouseLeave = () => {
+  isShowRemind.value = false;
+};
 </script>
 
 <template>
@@ -63,7 +72,15 @@ defineExpose({ handleValidate });
       @blur="handleBlur()"
       maxlength="16"
     />
-    <div class="tip-icon"></div>
+    <div
+      class="tip-icon"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+    >
+      <div class="tip-text" v-if="isShowRemind && props.remind">
+        {{ props.remind }}
+      </div>
+    </div>
     <div class="tip-operate" v-if="props.operate">{{ props.operate }}</div>
   </div>
 </template>
@@ -114,6 +131,19 @@ defineExpose({ handleValidate });
     background-size: 1800px 330px;
     background-image: url(@/assets/home/homePage.png);
     background-position: -60px 0;
+    .tip-text {
+      position: absolute;
+      top: 22px;
+      left: 0;
+      background-color: white;
+      color: #666666;
+      font-size: 12px;
+      padding: 10px 5px 12px 5px;
+      width: 160px;
+      overflow-wrap: break-word;
+      height: 15px;
+      line-height: 12px;
+    }
   }
   .tip-operate {
     position: absolute;

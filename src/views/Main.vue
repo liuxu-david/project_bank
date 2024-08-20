@@ -218,17 +218,20 @@ const loginData = reactive([
     id: "username",
     title: "iGTB平台编号/登录名称",
     value: "",
+    remind: "14位数字企业网上银行账号 / 8-16个英文字符登入名称",
   },
   {
     id: "codename",
     title: "使用者代号",
     value: "",
+    remind: "2-6个英文字或数字",
   },
   {
     id: "password",
     title: "密码",
     value: "",
     operate: "忘记密码",
+    remind: "8-12个字母、数字及/或符号",
   },
   {
     id: "authcode",
@@ -242,17 +245,20 @@ const modalData = reactive([
     id: "username",
     title: "iGTB平台编号/登录名称",
     value: "",
+    remind: "14位数字企业网上银行账号 / 8-16个英文字符登入名称",
   },
   {
     id: "codename",
     title: "使用者代号",
     value: "",
+    remind: "2-6个英文字或数字",
   },
   {
     id: "password",
     title: "密码",
     value: "",
     operate: "忘记密码",
+    remind: "8-12个字母、数字及/或符号",
   },
   {
     id: "authcode",
@@ -308,6 +314,7 @@ const handleLogin = () => {
           :title="item.title"
           :operate="item.operate"
           :id="item.id"
+          :remind="item.remind"
           ref="inputRef"
         />
 
@@ -345,6 +352,8 @@ const handleLogin = () => {
             :title="item.title"
             :operate="item.operate"
             :id="item.id"
+            :remind="item.remind"
+            ref="inputRef"
           />
           <div class="login_button">
             <span class="btn" @click="handleLogin">基本登录</span>

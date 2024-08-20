@@ -41,19 +41,35 @@ const handleLeave = () => {
   background-size: 540px 180px;
   .tooltips {
     position: absolute;
-    top: 25px;
-    right: 11px;
+    top: 31px;
+    right: -5px;
     background-color: #ffffff;
     color: #666666;
     display: inline-flex;
     justify-content: space-around;
     flex-wrap: nowrap;
     flex-direction: row;
-    overflow: hidden;
     width: 60px;
+    padding: 5px 5px;
     font-size: 12px;
     line-height: 24px;
     text-align: center;
+    box-shadow: 0px 1px 4px 1px rgba(34, 34, 34, 0.3);
+    &::before {
+      border: solid transparent;
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: #ffffff;
+      border-width: 8px;
+      margin-right: -8px;
+      right: 16px;
+      z-index: 3;
+      bottom: calc(100%);
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
   }
 }
 </style>

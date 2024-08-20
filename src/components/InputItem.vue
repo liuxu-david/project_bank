@@ -133,8 +133,8 @@ const handleMouseLeave = () => {
     background-position: -60px 0;
     .tip-text {
       position: absolute;
-      top: 22px;
-      left: 0;
+      top: 30px;
+      left: -143px;
       background-color: white;
       color: #666666;
       font-size: 12px;
@@ -143,6 +143,21 @@ const handleMouseLeave = () => {
       overflow-wrap: break-word;
       height: 15px;
       line-height: 12px;
+      &::before {
+        border: solid transparent;
+        border-color: rgba(255, 255, 255, 0);
+        border-bottom-color: #ffffff;
+        border-width: 8px;
+        margin-right: -8px;
+        right: 16px;
+        z-index: 3;
+        bottom: calc(100%);
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
     }
   }
   .tip-operate {
